@@ -1,0 +1,17 @@
+services:
+  imn-education-db:
+    container_name: imn-education-db
+    image: postgres:17-alpine
+    restart: unless-stopped
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - imn_education_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  imn_education_postgres_data:
+    name: imn_education_postgres_data      

@@ -1,0 +1,17 @@
+.card {
+    border-radius: 4px;
+    box-shadow: 0 3px 8px rgba(34, 60, 80, 0.2);  
+    padding: 20px;  
+    position: relative;
+}
+
+.card-workshop {
+    padding: 0;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+
+}

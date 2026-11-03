@@ -1,0 +1,27 @@
+.input {
+    height: 40px;
+    border-radius: 4px;
+    padding: 0 20px;
+    width: 100%;
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.input:focus {
+    border-color: #1785e5;
+}
+
+.textarea {
+    border: 1px solid lightgray;
+    outline: none;
+    padding: 20px;
+}
+
+.textarea:focus {
+    border-color: #1785e5;
+}
+
+.editor-field {
+    --ck-color-base-border: lightgray;
+    --ck-color-focus-border: #1785e5;
+}

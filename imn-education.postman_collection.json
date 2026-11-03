@@ -1,0 +1,840 @@
+{
+	"info": {
+		"_postman_id": "4e120d14-db5f-474b-b413-9c37a1c7be85",
+		"name": "imn-education",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26353099"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "sendVerificationEmail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{sendVerificationEmail_EMAIL}}",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/auth/sendmail",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"sendmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyCode",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{sendVerificationEmail_EMAIL}}",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "IMNEducation1793702068719",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/auth/verifycode",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verifycode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signUpManager",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{signUpManager_EMAIL}}",
+									"type": "text"
+								},
+								{
+									"key": "full_name",
+									"value": "Mikhail Ivannikov",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{signUpManager_PASSWORD}}",
+									"type": "text"
+								},
+								{
+									"key": "password2",
+									"value": "{{signUpManager_PASSWORD}}",
+									"type": "text"
+								},
+								{
+									"key": "company_name",
+									"value": "IMN Education",
+									"type": "text"
+								},
+								{
+									"key": "company_description",
+									"value": "Technology Development and Learning",
+									"type": "text"
+								},
+								{
+									"key": "company_address",
+									"value": "Almaty, Zelenaya, 9",
+									"type": "text"
+								},
+								{
+									"key": "company_logo",
+									"type": "file",
+									"src": "/run/user/1000/doc/d0d9b69e/logo.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/auth/signup",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginManager",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{signUpManager_EMAIL}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{signUpManager_PASSWORD}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/auth/login",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "resume",
+			"item": [
+				{
+					"name": "createResume",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"first_name\": \"Mikhail\", \r\n  \"last_name\": \"Ivannikov\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/resume",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"resume"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMyResumes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/api/resume",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"resume"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getResume",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/api/resume/4",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"resume",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removeResumeById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/api/resume/4",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"resume",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editResume",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 4,\r\n  \"first_name\": \"Mikhaill+\", \r\n  \"last_name\": \"Ivannikov\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/resume",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"resume"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vacancy",
+			"item": [
+				{
+					"name": "createVacancy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Working with Data: From Learning to Practice",
+									"type": "text"
+								},
+								{
+									"key": "about_company",
+									"value": "Михаил Иванников — Full-stack разработка, создание веб-приложений и цифровых продуктов",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Как превратить знания о работе с данными в реальное приложение? Воркшоп основан на самостоятельном изучении курса Meta Working with Data на Coursera и последующей разработке собственного приложения. Разбор подходов к работе с данными, практическая реализация и дополнительные видеоматериалы",
+									"type": "text"
+								},
+								{
+									"key": "event_date",
+									"value": "2026-08-19T10:30:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "Университет КИМЭП, Валиханов-билдинг (здание Валиханова), зал №112.",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "branding_photo",
+									"type": "file",
+									"src": "/run/user/1000/doc/8a535240/preview_3.jpeg"
+								},
+								{
+									"key": "materials",
+									"value": "[\"https://www.youtube.com/watch?v=zgRlD63k3Xk&list=PLCvFq9xQIQOR17ssEdiJZRkJQ6CpfRHiB&index=1\", \"https://appgallery.huawei.com/app/C111316629\"]\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/vacancy",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"vacancy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editVacancy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "+Working with Data: From Learning to Practice",
+									"type": "text"
+								},
+								{
+									"key": "about_company",
+									"value": "Михаил Иванников — Full-stack разработка, создание веб-приложений и цифровых продуктов",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Как превратить знания о работе с данными в реальное приложение? Воркшоп основан на самостоятельном изучении курса Meta Working with Data на Coursera и последующей разработке собственного приложения. Разбор подходов к работе с данными, практическая реализация и дополнительные видеоматериалы",
+									"type": "text"
+								},
+								{
+									"key": "event_date",
+									"value": "2026-08-19T10:30:00",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "Университет КИМЭП, Валиханов-билдинг (здание Валиханова), зал №112.",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "branding_photo",
+									"type": "file",
+									"src": "/run/user/1000/doc/8a535240/preview_3.jpeg"
+								},
+								{
+									"key": "materials",
+									"value": "[\"https://www.youtube.com/watch?v=zgRlD63k3Xk&list=PLCvFq9xQIQOR17ssEdiJZRkJQ6CpfRHiB&index=1\", \"https://appgallery.huawei.com/app/C111316629\"]\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/vacancy",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"vacancy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMyVacancies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/api/vacancy",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"vacancy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getVacancyById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/api/vacancy/5",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"vacancy",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteVacancy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/api/vacancy/4",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"vacancy",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "applies",
+			"item": [
+				{
+					"name": "createApply",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "resumeId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "vacancyId",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/applies",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"applies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEmployeeAplies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/api/applies/employee",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"applies",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteApply",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/api/applies/1",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"applies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "attendedEmployee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "applyId",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/applies/accept/employee",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"applies",
+								"accept",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "declineEmployee",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "applyId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{END_POINT}}/api/applies/decline/employee",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"applies",
+								"decline",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAppliesByVacancyId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AUTH_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/api/applies/vacancy/2",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"api",
+								"applies",
+								"vacancy",
+								"2"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "DECLINED",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCertificate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{END_POINT}}/certificate/4/10",
+							"host": [
+								"{{END_POINT}}"
+							],
+							"path": [
+								"certificate",
+								"4",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

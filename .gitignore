@@ -1,0 +1,32 @@
+# Dependencies
+**/node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Build output
+**/.next/
+**/out/
+**/build/
+**/dist/
+
+# Tests
+**/coverage/
+**/test-results/
+**/playwright-report/
+**/playwright/.cache/
+
+# Logs
+*.log
+
+# System and editor files
+.DS_Store
+.idea/
+.vscode/
+*.pem
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
