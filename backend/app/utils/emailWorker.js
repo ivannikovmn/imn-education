@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const worker = new Worker(
-  'wildnature-email',
+  'imn-education-email',
   async (job) => {
     const { to, subject, text } = job.data;
 

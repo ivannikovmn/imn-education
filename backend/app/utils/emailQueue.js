@@ -5,7 +5,7 @@ const connection = {
   port: Number(process.env.REDIS_PORT || 6379),
 };
 
-const emailQueue = new Queue('wildnature-email', {
+const emailQueue = new Queue('imn-education-email', {
   connection,
   defaultJobOptions: {
     attempts: 3,

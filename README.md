@@ -180,25 +180,30 @@ A certificate is available only for applications with the `ATTENDED` status. The
 
 Certificates are not stored as separate records in the database. An email notification containing the certificate link is sent as part of the application workflow.
 
-## Redis and Email Worker
+## Background Processing and Shared Infrastructure
 
-IMN Education uses Redis and BullMQ for background email processing.
+Redis and BullMQ are used for asynchronous email notifications.
 
-Email delivery uses Nodemailer and Gmail SMTP. The required environment variables include `MAIL_USER` and `MAIL_PASSWORD`.
+IMN Education uses a dedicated BullMQ queue and email worker, keeping background job processing isolated from other applications hosted on the same infrastructure.
+
+Email delivery is implemented with Nodemailer and Gmail SMTP. Failed jobs are retried automatically according to the configured BullMQ retry policy.
+
+Redis is provided by the shared server infrastructure, while each application maintains its own queue and worker process.
 
 ## Continuous Integration and Deployment
 
-Production deployment is managed on an Ubuntu server using PM2.
+The project uses GitHub Actions for continuous integration.
 
-Automated GitHub Actions workflows for testing and deployment are planned for a future iteration.
+On pushes and pull requests targeting `main`, the CI pipeline runs:
 
-## Database Maintenance
+- ESLint
+- Vitest unit tests
+- Playwright end-to-end tests
+- Next.js production build
 
-- PostgreSQL data is stored in the named Docker volume `imn_education_postgres_data`.
-- Restarting the application does not require recreating the database.
-- Back up the database before migrations or destructive changes.
-- Never use `docker compose down -v` on production data unless deleting the database is explicitly intended.
-- Keep database credentials and JWT secrets outside version control.
+Production deployment is implemented using a self-hosted GitHub Actions runner on Ubuntu and PM2 process management.
+
+The deployment architecture uses versioned releases and a shared directory for environment configuration and uploaded files. This keeps persistent application data separate from deployable code and allows releases to be switched independently.
 
 ## Stack
 
@@ -221,6 +226,7 @@ Automated GitHub Actions workflows for testing and deployment are planned for a 
 - Dotenv
 - Nodemon + Morgan
 - PM2
+- GitHub Actions
 - Vitest
 - Playwright
 - Google Analytics 4 (website traffic and user interaction analytics)
