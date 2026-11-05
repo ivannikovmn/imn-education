@@ -91,7 +91,10 @@ jobs:
                 rm -f "$ROOT/current.rollback"
                 ln -s "$PREVIOUS_RELEASE" "$ROOT/current.rollback"
                 mv -Tf "$ROOT/current.rollback" "$ROOT/current"
-                "$PM2" startOrRestart "$ROOT/ecosystem.config.cjs" --update-env
+                for app in imn-education-backend imn-education-frontend imn-education-email-worker; do
+                  "$PM2" delete "$app" 2>/dev/null || true
+                done
+                "$PM2" start "$ROOT/ecosystem.config.cjs" --update-env
               fi
 
               if [[ -d "$RELEASE" ]] &&
@@ -127,7 +130,10 @@ jobs:
           ACTIVATED=true
 
           # Start or restart all three PM2 processes.
-          "$PM2" startOrRestart "$ROOT/ecosystem.config.cjs" --update-env
+          for app in imn-education-backend imn-education-frontend imn-education-email-worker; do
+                  "$PM2" delete "$app" 2>/dev/null || true
+                done
+                "$PM2" start "$ROOT/ecosystem.config.cjs" --update-env
 
           for app in imn-education-backend imn-education-frontend imn-education-email-worker; do
             "$PM2" describe "$app" | grep -q online
