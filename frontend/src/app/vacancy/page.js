@@ -17,7 +17,7 @@ export default function Vacancy() {
         <Header />
         <div className='container'>
           <div className='flex flex-ai-c flex-js-sb ptb7'>
-              <h1>Воркшопы</h1>            
+              <h1>Мои воркшопы</h1>            
           </div>             
           <MyVacancies/>  
         </div>

@@ -38,7 +38,7 @@ export default function Header() {
                         )}
 
                         {mounted && currentUser && currentUser.role && currentUser.role.name !== "manager" && (
-                            <Link href="/resumes">Мои резюме</Link>
+                            <Link href="/resumes">Резюме</Link>
                         )}
 
                         {mounted && currentUser && currentUser.role && currentUser.role.name !== "manager" && (

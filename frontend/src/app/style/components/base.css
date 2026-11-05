@@ -112,3 +112,9 @@ body, div, input, a, li, ul, textarea, span, p, h1, h2, h3, ol, aside, main {
 /* .ck-powered-by {
     display: none;    
 } */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}

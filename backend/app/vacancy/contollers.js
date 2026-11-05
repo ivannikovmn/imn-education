@@ -1,3 +1,5 @@
+const User = require('../auth/User');
+const Role = require('../auth/Role');
 const Vacancy = require('./models/Vacancy');
 const Company = require('../auth/Company');
 
@@ -34,26 +36,10 @@ const createVacancy = async (req, res, next) => {
             companyId: req.user.companyId,
         });
 
-        res.status(201).send(vacancy);
-    // } catch (error) {
-    //     next(error);
-    // }
+        res.status(201).send(vacancy);        
     } catch (error) {
-        console.error('CREATE VACANCY ERROR:', {
-            name: error.name,
-            message: error.message,
-            detail: error.parent?.detail,
-            code: error.parent?.code,
-            constraint: error.parent?.constraint,
-            table: error.parent?.table,
-            column: error.parent?.column,
-        });
-
-        return res.status(500).json({
-            message: 'Ошибка создания воркшопа',
-            error: error.message,
-        });
-    }    
+        next(error);
+    }
 };
 
 const getMyVacancies = async (req, res) => {
@@ -64,6 +50,32 @@ const getMyVacancies = async (req, res) => {
     });
 
     res.status(200).send(vacancies);
+};
+
+const getPublicVacancies = async (req, res, next) => {
+    try {
+        const vacancies = await Vacancy.findAll({
+            attributes: ['id', 'name', 'updatedAt'],
+            include: [{
+                model: User,
+                attributes: [],
+                required: true,
+                include: [{
+                    model: Role,
+                    attributes: [],
+                    where: {
+                        name: 'manager',
+                    },
+                    required: true,
+                }],
+            }],
+            order: [['updatedAt', 'DESC']],
+        });
+
+        res.status(200).send(vacancies);
+    } catch (error) {
+        next(error);
+    }
 };
 
 const getVacancy = async (req, res) => {
@@ -124,6 +136,7 @@ const editVacancy = async (req, res, next) => {
 module.exports = {
     createVacancy,
     getMyVacancies,
+    getPublicVacancies,
     getVacancy,
     deleteVacancy,
     editVacancy,
