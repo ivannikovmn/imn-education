@@ -14,6 +14,7 @@ import {
     getEmployeeApplies,
     getVacancyApplies
 } from '@/app/store/slices/applySlice'
+import { formatDateTime } from '@/app/utils/format'
 
 const subscribe = () => () => {}
 const getSnapshot = () => true
@@ -177,6 +178,18 @@ export default function VacancyPage() {
                     className="secondary"
                     dangerouslySetInnerHTML={{ __html: vacancy.description ?? '' }}
                 />
+
+                {vacancy.event_date && (
+                    <p className="secondary">
+                        Дата: {formatDateTime(vacancy.event_date)}
+                    </p>
+                )}
+
+                {vacancy.address && (
+                    <p className="secondary">
+                        Адрес: {vacancy.address}
+                    </p>
+                )}
 
                 {materials.length > 0 && (
                     <section className="mt7">

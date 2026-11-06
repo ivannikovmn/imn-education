@@ -57,6 +57,8 @@ export const createVacancy = (sendData, router) => async (dispatch) => {
         fd.append("name", sendData.name)
         fd.append("about_company", sendData.about_company)
         fd.append("description", sendData.description)
+        fd.append("event_date", sendData.event_date || "")
+        fd.append("address", sendData.address || "")        
         fd.append("materials", JSON.stringify(sendData.materials ?? []))
 
         if (sendData.branding_photo) {
@@ -80,6 +82,8 @@ export const editVacancy = (sendData, router) => async (dispatch) => {
     fd.append("name", sendData.name)
     fd.append("about_company", sendData.about_company)
     fd.append("description", sendData.description)
+    fd.append("event_date", sendData.event_date || "")
+    fd.append("address", sendData.address || "")
     fd.append("materials", JSON.stringify(sendData.materials ?? []))
 
     if (sendData.branding_photo) {

@@ -17,6 +17,22 @@ function EditVacancyForm({ vacancy, router, dispatch }) {
     const [name, setName] = useState(vacancy.name ?? "")
     const [about_company, setAbout_company] = useState(vacancy.about_company ?? "")
     const [description, setDescription] = useState(vacancy.description ?? "")
+    const [event_date, setEvent_date] = useState(() => {
+        if (!vacancy.event_date) return ""
+
+        return new Intl.DateTimeFormat("sv-SE", {
+            timeZone: "Asia/Almaty",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            hourCycle: "h23"
+        })
+            .format(new Date(vacancy.event_date))
+            .replace(" ", "T")
+    })
+    const [address, setAddress] = useState(vacancy.address ?? "")
     const [materials, setMaterials] = useState(
         Array.isArray(vacancy.materials) && vacancy.materials.length
             ? vacancy.materials
@@ -44,6 +60,8 @@ function EditVacancyForm({ vacancy, router, dispatch }) {
             name,
             about_company,
             description,
+            event_date,
+            address,
             materials: materials.map((item) => item.trim()).filter(Boolean),
             branding_photo
         }, router))
@@ -79,6 +97,27 @@ function EditVacancyForm({ vacancy, router, dispatch }) {
                 <div className="editor-field">
                     <Editor data={description} onChange={setDescription} />
                 </div>
+            </fieldset>
+
+            <fieldset className="fieldset-vertical fieldset-md">
+                <label>Дата и время</label>
+                <input
+                    className="input"
+                    type="datetime-local"
+                    value={event_date}
+                    onChange={(e) => setEvent_date(e.target.value)}
+                />
+            </fieldset>
+
+            <fieldset className="fieldset-vertical">
+                <label>Адрес</label>
+                <input
+                    className="input"
+                    placeholder="Введите адрес"
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                />
             </fieldset>
 
             <fieldset className="fieldset-vertical fieldset-md">

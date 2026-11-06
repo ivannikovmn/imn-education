@@ -15,6 +15,8 @@ export default function CreateVacancy() {
     const [name, setName] = useState("")
     const [about_company, setAbout_company] = useState("")
     const [description, setDescription] = useState("")
+    const [event_date, setEvent_date] = useState("")
+    const [address, setAddress] = useState("")
     const [materials, setMaterials] = useState([""])
     const [branding_photo, setBrandingPhoto] = useState(null)
 
@@ -40,6 +42,8 @@ export default function CreateVacancy() {
             name,
             about_company,
             description,
+            event_date,
+            address,
             materials: materials.map((item) => item.trim()).filter(Boolean),
             branding_photo
         }, router))
@@ -77,6 +81,21 @@ export default function CreateVacancy() {
                     <div className="editor-field">
                         <Editor data={description} onChange={setDescription} />
                     </div>
+                </fieldset>
+
+                <fieldset className="fieldset-vertical fieldset-md">
+                    <label>Дата и время</label>
+                    <input
+                        className="input"
+                        type="datetime-local"
+                        value={event_date}
+                        onChange={(e) => setEvent_date(e.target.value)}
+                    />                    
+                </fieldset>                                 
+
+                <fieldset className="fieldset-vertical">
+                    <label>Адрес</label>
+                    <input className="input" placeholder="Введите адрес" type="text" value={address} onChange={(e)=>setAddress(e.target.value)}/>
                 </fieldset>
 
                 <fieldset className="fieldset-vertical fieldset-md">
