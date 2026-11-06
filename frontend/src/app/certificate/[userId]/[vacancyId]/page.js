@@ -5,7 +5,7 @@ import { useParams } from "next/navigation"
 import axios from "axios"
 import { END_POINT } from "@/config/end-point"
 import Image from 'next/image'
-import logo from '../../../images/logo.png'
+import logo from '../../../images/logo.svg'
 import { formatDate } from '@/app/utils/format'
 
 export default function CertificatePage() {

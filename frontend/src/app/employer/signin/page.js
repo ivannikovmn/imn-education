@@ -4,7 +4,7 @@ import { setError, signIn } from "@/app/store/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import Image from 'next/image'
-import logo from '../../images/logo.png'
+import logo from '../../images/logo.svg'
 import Link from 'next/link'
 
 export default function EmployerSignin() {

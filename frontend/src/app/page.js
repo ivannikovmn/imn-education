@@ -24,7 +24,7 @@ export default async function Home() {
     <main>
       <Header />
 
-      <section className="container ptb7">
+      <section className="container">
         <h1>Открытые воркшопы</h1>
 
         {vacancies.length > 0 ? (
