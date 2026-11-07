@@ -4,7 +4,7 @@ test('home page displays the IMN Education header', async ({ page }) => {
   await page.goto('/')
 
   await expect(
-    page.getByRole('img', { name: 'imn-education' })
+    page.getByRole('img', { name: 'IMN Education' })
   ).toBeVisible()
 
   await expect(
