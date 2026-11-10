@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -58,15 +57,34 @@ export default function AdsterraBanner() {
 
     return (
         <div
-            id="adsterra-banner"
             style={{
-                display: 'flex',
-                justifyContent: 'center',
                 width: '100%',
                 margin: '32px auto 16px',
-                minHeight: isMobile === null ? 0 : isMobile ? 50 : 90,
                 overflow: 'hidden'
             }}
-        />
+        >
+            <div
+                style={{
+                    maxWidth: 728,
+                    margin: '0 auto 8px',
+                    padding: '0 4px',
+                    color: 'rgba(0, 0, 0, 0.45)',
+                    fontSize: 12,        
+                    textAlign: 'right'          
+                }}
+            >
+                Реклама
+            </div>
+
+            <div
+                id="adsterra-banner"
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    width: '100%',
+                    minHeight: isMobile === null ? 0 : isMobile ? 50 : 90,
+                }}
+            />
+        </div>
     )
 }
