@@ -7,7 +7,13 @@
 
 .card-workshop {
     padding: 0;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+}
+
+.card-materials {
+    padding: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: none;
 }
 

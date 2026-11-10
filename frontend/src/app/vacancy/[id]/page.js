@@ -15,6 +15,7 @@ import {
     getVacancyApplies
 } from '@/app/store/slices/applySlice'
 import { formatDateTime } from '@/app/utils/format'
+import AdsterraBanner from '@/components/AdsterraBanner'
 
 const subscribe = () => () => {}
 const getSnapshot = () => true
@@ -192,7 +193,7 @@ export default function VacancyPage() {
                 )}
 
                 {materials.length > 0 && (
-                    <section className="mt7">
+                    <section className="mt7 card-materials">
                         <h2>К воркшопу</h2>
 
                         {materials.map((material, index) => {
@@ -241,6 +242,7 @@ export default function VacancyPage() {
                         })}
                     </section>
                 )}
+                <AdsterraBanner />
             </div>
         </main>
     )
