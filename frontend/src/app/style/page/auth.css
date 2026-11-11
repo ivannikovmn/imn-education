@@ -29,3 +29,12 @@
 .error {
     color: #ff0000;    
 }
+
+.auth-switch {
+    color: #fff;
+    text-align: center;
+}
+
+.auth-switch a {
+    color: #fff;
+}

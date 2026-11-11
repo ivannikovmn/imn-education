@@ -65,15 +65,24 @@ export default function EmployerSignup() {
             </div>
 
             <section className="login-page">
-            {step === 1 && <div className="card">
-                  <h1>Регистрация для поиска участников</h1>
-                  <p>После регистрации вы сможете перейти в свой профиль</p>
-                  <form>
-                      <input className="input" placeholder="Введите email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                      <button className="button button-primary" onClick={()=>setStep(2)}>Продолжить</button>
-                  </form>
-                  {error && Object.keys(error).map(key => (<p className="error" key={key}> { error[key] } </p>))}
-              </div>}
+          {step === 1 && (
+              <>
+                  <div className="card">
+                    <h1>Регистрация для поиска участников</h1>
+                    <p>После регистрации вы сможете перейти в свой профиль</p>
+                    <form>
+                        <input className="input" placeholder="Введите email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <button className="button button-primary" onClick={()=>setStep(2)}>Продолжить</button>
+                    </form>                
+                    {error && Object.keys(error).map(key => (<p className="error" key={key}> { error[key] } </p>))}                      
+                  </div>
+
+                  <div className="auth-switch">
+                      Если есть аккаунт, то{' '}
+                      <Link href="/employer/signin">войти</Link>
+                  </div>
+              </>
+          )}              
 
               {step === 2 && <div className="card">
                 <h1>Как Вас зовут?</h1>

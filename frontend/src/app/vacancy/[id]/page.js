@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useEffect, useState, useSyncExternalStore } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVacancyById } from '@/app/store/slices/vacancySlice'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { END_POINT } from '@/config/end-point'
 import { getMyResumes } from '@/app/store/slices/resumeSlice'
@@ -51,6 +51,7 @@ function getYouTubeEmbedUrl(value) {
 
 export default function VacancyPage() {
     const dispatch = useDispatch()
+    const router = useRouter()
     const { id } = useParams()
     const vacancy = useSelector((state) => state.vacancy.vacancy)
     const currentUser = useSelector((state) => state.auth.currentUser)
@@ -91,6 +92,8 @@ export default function VacancyPage() {
 
     const isApplied = applies.some((item) => item.vacancyId === Number(id))
     const materials = Array.isArray(vacancy.materials) ? vacancy.materials : []
+    const isEmployee = currentUser?.role?.name === 'employee'
+    const isAuthor = currentUser?.id === vacancy.userId   
 
     return (
         <main>
@@ -124,14 +127,16 @@ export default function VacancyPage() {
                         </p>
                     )}
 
-                    <Link href={`/vacancy/${id}/applies`} className="link">
-                        Участники: {applies.length}
-                    </Link>
+                    {mounted && isAuthor && (
+                        <Link href={`/vacancy/${id}/applies`} className="link">
+                            Участники: {applies.length}
+                        </Link>
+                    )}
 
                     <h1>{vacancy.name}</h1>
                     <p>{vacancy.about_company}</p>
 
-                    {mounted && currentUser?.role?.name === 'employee' && (
+                    {mounted && isEmployee && !isApplied && (
                         <select
                             className="input mtb4"
                             value={selectedResumeId ?? ''}
@@ -146,16 +151,23 @@ export default function VacancyPage() {
                         </select>
                     )}
 
-                    {mounted && currentUser && currentUser.id !== vacancy.userId && !isApplied && (
+                    {mounted && (!currentUser || isEmployee) && !isApplied && (
                         <button
                             className="button button-primary"
-                            onClick={handleApply}
+                            onClick={() => {
+                                if (!currentUser) {
+                                    router.push('/login')
+                                    return
+                                }
+
+                                handleApply()
+                            }}
                         >
-                            Записаться на воркошп
+                            Записаться на воркшоп
                         </button>
                     )}
 
-                    {mounted && currentUser && currentUser.id !== vacancy.userId && isApplied && (
+                    {mounted && isEmployee && isApplied && (
                         <Link
                             className="button button-primary"
                             style={{ maxWidth: '200px' }}

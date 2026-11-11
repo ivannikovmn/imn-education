@@ -37,7 +37,7 @@ export default function EmployerSignin() {
                     <Image src={logo} alt="IMN Education" />                               
                 </Link>                                     
                 <p>
-                    Зарегистрируйтесь сейчас, 
+                    Авторизируйтесь сейчас, 
                     чтобы получить доступ к базе участников или
                     публикацию воркшопов - все
                     акции уже ждут вас в разделе
@@ -55,9 +55,13 @@ export default function EmployerSignin() {
                       <input type="password" className="input" placeholder="Введите пароль" value={password} onChange={(e)=>setPassword(e.target.value)}/>                      
                       <button className="button button-primary" onClick={handleSignup} type="button">Войти</button>
                   </form>
-                  {error && Object.keys(error).map(key => (<p className="error" key="key"> { error[key] } </p>))}
+                  {error && Object.keys(error).map(key => (<p className="error" key={key}> { error[key] } </p>))}                  
               </div>
-                          
+              <div className="auth-switch">
+                  Если нет аккаунта, то{' '}
+                  <Link href="/employer/signup">создать</Link>
+              </div>         
+                                      
             </section>
 
         </div>

@@ -70,8 +70,9 @@ a.header-button--green{
 
 .header-logo img {
     width: 70px;
-    height: 80px;
+    height: 70px;
     object-fit: contain;
+    transform: translateX(-20px);
 }
 
 .header-menu {
