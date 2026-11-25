@@ -32,11 +32,8 @@ return (
         <div className="certificate">
             <div className="certificate-header">
                 <p className="certificate-logo">
-                    <Image
-                        src={logo}
-                        alt="IMN Education"
-                    />
-                </p>
+                    <Image src={logo} alt="IMN Education" />
+                </p>            
 
                 <div className="certificate-title">
                     Сертификат

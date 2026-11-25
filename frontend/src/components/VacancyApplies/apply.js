@@ -6,7 +6,7 @@ export default function Apply ({item}) {
 
     const dispatch = useDispatch()
 
-    return (<div className="card card-block">
+    return (<div className="card">
 
         <Link className='link' href={`/resumes/${item.resume.id}`}>{item.resume.first_name} {item.resume.last_name}</Link>        
 

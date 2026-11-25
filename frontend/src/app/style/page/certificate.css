@@ -34,6 +34,12 @@
     text-align: right;
 }
 
+.certificate-logo img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+ }   
+
 .certificate-title {
     font-size: 50px;
     font-weight: 900;    
@@ -89,7 +95,7 @@
 
     .certificate {
         min-height: 600px;
-        padding: 40px 25px;
+        padding: 30px;
         border-width: 8px;
     }
 

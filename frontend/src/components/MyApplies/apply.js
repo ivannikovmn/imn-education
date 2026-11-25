@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteApply } from '@/app/store/slices/applySlice';
+import { formatDate } from '@/app/utils/format'
+
 export default function MyApply ({item}) {
     const dispatch = useDispatch()
 
@@ -17,7 +19,7 @@ export default function MyApply ({item}) {
             </div>
         </div>  
         <div className='col'>
-            {item.updatedAt}
+            {formatDate(item.createdAt)}
         </div>               
     </div>)
 }

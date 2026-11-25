@@ -29,10 +29,9 @@ export default function VacancyApplies() {
             <Header />
             <div className='container'>
             <div className='flex flex-ai-c flex-js-sb ptb7'>
-                <h1>Отклики {applies.length}</h1>            
-                {/* <Link className='button button-secondary-bordered' href="/create-vacancy">Создать мероприятие</Link> */}
+                <h1>Отклики {applies.length}</h1>                            
             </div>  
-            <div className='flex flex-js-sb'>
+            <div className='applies-layout'>
                 <div className="list">
                     <div className={`list-item${status === "NEW"?" active": ""}`} onClick={()=>setStatus("NEW")}>Все неразобранные</div>
                     <div className={`list-item${status === "ATTENDED"?" active": ""}`} onClick={()=>setStatus("ATTENDED")}>Одобрено</div>

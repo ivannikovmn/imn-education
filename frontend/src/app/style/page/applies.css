@@ -28,3 +28,23 @@
 .applies {
     width: calc(100% - 270px);
 }
+
+.applies-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .applies-layout {
+        flex-direction: column;
+    }
+
+    .list {
+        width: 100%;
+    }
+
+    .applies {
+        width: 100%;
+    }
+}

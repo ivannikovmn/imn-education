@@ -79,7 +79,7 @@ export default function EmployerSignup() {
 
                   <div className="auth-switch">
                       Если есть аккаунт, то{' '}
-                      <Link href="/employer/signin">войти</Link>
+                      <Link href="/employer/signin">Войти</Link>
                   </div>
               </>
           )}              

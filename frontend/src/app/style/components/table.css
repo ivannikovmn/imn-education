@@ -11,6 +11,7 @@
 
 .col {
     width: 33.333%;
+    padding: 10px;
 }
 
 .row-header {
